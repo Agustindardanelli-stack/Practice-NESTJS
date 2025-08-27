@@ -6,11 +6,11 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'tu-password',
+      port: 5432,
+      username: 'postgres',
+      password: '1234', // Tu password de Postgres
       database: 'taskflow',
       autoLoadEntities: true,
       synchronize: true, // Solo en desarrollo
