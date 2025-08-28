@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
+import { Task } from '../../tasks/entities/task.entity';
 
 @Entity()
 class User {
@@ -19,6 +20,10 @@ class User {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  // AGREGAR ESTA LÍNEA:
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
 }
 
 export { User };

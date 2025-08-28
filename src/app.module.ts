@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -10,13 +11,15 @@ import { UsersModule } from './users/users.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '1234', // Tu password de Postgres
+      password: '1234',
       database: 'taskflow',
       autoLoadEntities: true,
-      synchronize: true, // Solo en desarrollo
+      synchronize: true,
     }),
     AuthModule,
     UsersModule,
+    TasksModule, // ← Solo esto basta
   ],
+  // SIN providers ni controllers aquí
 })
 export class AppModule {}
